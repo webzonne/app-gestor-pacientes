@@ -64,20 +64,20 @@ const editar = async(e)=>{
         <div>
             <>
                 <Layout>
-                    <h1 className='text-xl  text-center py-2 mt-20 mb-10 m-auto w-2/12 border border-slate-100 rounded'>LISTA DE PACIENTES</h1>
+                    <h1 className='text-xl  text-center py-2 mt-20 mb-10 m-auto w-12/12 sm:w-2/12 border border-slate-100 rounded'>LISTA DE PACIENTES</h1>
                     {pacientes.length ?
                         <div>
-                            <div className='flex mx-auto justify-end w-10/12'>
+                            <div className='flex mx-auto justify-end w-12/12 sm:w-10/12'>
                                 <button onClick={() => push("/formulario")} className='flex items-center py-3 px-8 mb-5 bg-botoncolor rounded font-bold text-slate-50 hover:opacity-60'><span className='mr-2'>PACIENTE</span> <ImPlus /></button>
                             </div>
-                            <table className="table-auto w-10/12 mx-auto border border-black-200">
+                            <table className="table-auto w-12/12 sm:w-10/12 mx-auto border border-black-200">
                                 <thead>
                                     <tr>
-                                        <th className='border border-black-200 p-3'>Nombre</th>
-                                        <th className='border border-black-200 p-3'>Patologia</th>
-                                        <th className='border border-black-200 p-3'>Ver</th>
-                                        <th className='border border-black-200 p-3'>Editar</th>
-                                        <th className='border border-black-200 p-3'>Eliminar</th>
+                                        <th className='border border-black-200 p-0 sm:p-3'>Nombre</th>
+                                        <th className='border border-black-200 p-0 sm:p-3'>Patologia</th>
+                                        <th className='border border-black-200 p-0 sm:p-3'>Ver</th>
+                                        <th className='border border-black-200 p-0 sm:p-3'>Editar</th>
+                                        <th className='border border-black-200 p-0 sm:p-3'>Eliminar</th>
                                     </tr>
                                 </thead>
                                 <tbody>

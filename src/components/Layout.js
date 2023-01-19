@@ -5,21 +5,21 @@ export default function Layout({ children }) {
     return (
         <>
             <div className='border-b border-slate-200 py-5'>
-                <div className='flex w-10/12 mx-auto justify-between'>
+                <div className='flex w-12/12 sm:w-10/12 mx-auto justify-between'>
 
                     <Link href='/aplication'>
                         <div>
-                            <button className='bg-botoncolor py-2 w-36 rounded text-slate-50 hover:opacity-60'>Lista</button>
+                            <button className='bg-botoncolor py-2 w-28 sm:w-36 rounded text-slate-50 hover:opacity-60'>Lista</button>
                         </div>
                     </Link>
                     <Link href='/formulario'>
                         <div>
-                            <button className='bg-botoncolor py-2 w-36 rounded text-slate-50 hover:opacity-60'>Formulario</button>
+                            <button className='bg-botoncolor py-2 w-28 sm:w-36 rounded text-slate-50 hover:opacity-60'>Formulario</button>
                         </div>
                     </Link>
                     <Link href='/estadisticas'>
                         <div>
-                            <button className='bg-botoncolor py-2 w-36 rounded text-slate-50 hover:opacity-60'>Estadisticas</button>
+                            <button className='bg-botoncolor py-2 w-28 sm:w-36 rounded text-slate-50 hover:opacity-60'>Estadisticas</button>
                         </div>
                     </Link>
                 </div>
