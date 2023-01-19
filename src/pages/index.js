@@ -1,8 +1,8 @@
 import React from 'react'
-
-const Index = () =>{ 
+import { useRouter } from 'next/router'
+export default function Index(){ 
   // VARIABLE
-
+  const {push} = useRouter()
   // FUNCIONES
   const entrar = (e)=>{
     e.preventDefault()
@@ -27,4 +27,3 @@ const Index = () =>{
     </div>
   </>
 )}
-export default Index
