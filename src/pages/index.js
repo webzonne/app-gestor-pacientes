@@ -6,7 +6,7 @@ export default function Index(){
   // FUNCIONES
   const entrar = (e)=>{
     e.preventDefault()
-    push("/app")
+    push("/aplication")
   }
   // CONSOLE
   return(
