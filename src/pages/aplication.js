@@ -1,34 +1,43 @@
 import conectarDB from '../lib/dbConnect'
-import React from 'react'
+import React, { useState } from 'react'
 import modelPaciente from '../models/modelo'
 import Layout from '../components/Layout'
 import { useRouter } from 'next/router'
 import { ImPlus } from 'react-icons/im';
 
 // SERVER
-export async function getServerSideProps() {
-    try {
-      await conectarDB()
+// export async function getServerSideProps() {
+//     try {
+//       await conectarDB()
   
-      const res = await modelPaciente.find({})
-      const pacientes = res.map((element) => {
-        const paciente = element.toObject()
-        paciente._id = paciente._id.toString()
-        return paciente
-      })
+//       const res = await modelPaciente.find({})
+//       const pacientes = res.map((element) => {
+//         const paciente = element.toObject()
+//         paciente._id = paciente._id.toString()
+//         return paciente
+//       })
      
-      // retorna
-      return { props: { pacientes } }
-    } catch (err) {
-      console.log(err)
-    }
-  }
+//       // retorna
+//       return { props: { pacientes } }
+//     } catch (err) {
+//       console.log(err)
+//     }
+//   }
   // CLOSE SERVER
 
 
 
-export default function estadisticas({ pacientes }) {
-
+export default function aplication() {
+const [pacientes,setpacientes]=useState([{
+    nombre:'carlos',
+    patologia:'mamasa'
+  },
+  {
+  nombre:'hector',
+  patologia:'mera'
+  }
+  
+])
 // ELIMINAR
 const eliminar = async(e)=>{
     confirm('desea eliminar? '+e.nombre)
@@ -56,7 +65,7 @@ const editar = async(e)=>{
             <>
                 <Layout>
                     <h1 className='text-xl  text-center py-2 mt-20 mb-10 m-auto w-2/12 border border-slate-100 rounded'>LISTA DE PACIENTES</h1>
-                    {pacientes.length ?
+                    {pacientes ?
                         <div>
                             <div className='flex mx-auto justify-end w-10/12'>
                                 <button onClick={() => push("/formulario")} className='flex items-center py-3 px-8 mb-5 bg-botoncolor rounded font-bold text-slate-50 hover:opacity-60'><span className='mr-2'>PACIENTE</span> <ImPlus /></button>
