@@ -29,7 +29,7 @@ export async function getServerSideProps() {
 
 export default function estadisticas({ pacientes }) {
 
-      // ELIMINAR
+// ELIMINAR
 const eliminar = async(e)=>{
     confirm('desea eliminar? '+e.nombre)
     await fetch(`api/eliminar/${e._id}`, {

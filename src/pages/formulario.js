@@ -26,7 +26,7 @@ export default function formulario() {
                 body: JSON.stringify(paciente),
             })
            
-            push("/app")
+            push("/aplication")
         } catch (error) {
            console.log(error)
         }

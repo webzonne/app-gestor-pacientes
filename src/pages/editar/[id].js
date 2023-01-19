@@ -46,7 +46,7 @@ export default function editar({respuest}) {
         },
         body: JSON.stringify(pacient),
         })
-        push("/app")
+        push("/aplication")
       } catch (error) {
         console.log(error)
       }
