@@ -7,7 +7,7 @@ export default function Layout({ children }) {
             <div className='border-b border-slate-200 py-5'>
                 <div className='flex w-10/12 mx-auto justify-between'>
 
-                    <Link href='/app'>
+                    <Link href='/aplication'>
                         <div>
                             <button className='bg-botoncolor py-2 w-36 rounded text-slate-50 hover:opacity-60'>Lista</button>
                         </div>
