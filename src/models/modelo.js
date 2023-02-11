@@ -8,6 +8,22 @@ const pacienteShema = new mongoose.Schema({
     patologia:{
         type:String,
         required:[true, "por favor ingresar patologia"]
+    },
+    sexo:{
+        type:String,
+        required:[true, "por favor ingresar sexo"]
+    },
+    edad:{
+        type:Number,
+        required:[true, "por favor ingresar edad"]
+    },
+    caso:{
+        type:String,
+        required:[true, "por favor ingresar edad"]
+    },
+    fecha:{
+        type:String
+        
     }
 })
 

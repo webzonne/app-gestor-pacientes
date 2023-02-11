@@ -1,5 +1,5 @@
 import conectarDB from '../lib/dbConnect'
-import React from 'react'
+import React, { useEffect } from 'react'
 import modelPaciente from '../models/modelo'
 import Layout from '../components/Layout'
 import { useRouter } from 'next/router'
@@ -14,6 +14,7 @@ export async function getServerSideProps() {
       const pacientes = res.map((element) => {
         const paciente = element.toObject()
         paciente._id = paciente._id.toString()
+        
         return paciente
       })
      
@@ -21,6 +22,7 @@ export async function getServerSideProps() {
       return { props: { pacientes } }
     } catch (err) {
       console.log(err)
+      return { props: { pacientes: [] } }
     }
   }
   // CLOSE SERVER
@@ -28,16 +30,7 @@ export async function getServerSideProps() {
 
 
 export default function aplication({pacientes}) {
-// const [pacientes,setpacientes]=useState([{
-//     nombre:'carlos',
-//     patologia:'mamasa'
-//   },
-//   {
-//   nombre:'hector',
-//   patologia:'mera'
-//   }
-  
-// ])
+
 // ELIMINAR
 const eliminar = async(e)=>{
     confirm('desea eliminar? '+e.nombre)
@@ -49,8 +42,9 @@ const eliminar = async(e)=>{
 
      // VARIABLES
   const {push} = useRouter()
+  
 
-  //VER
+  //DETALLE
 const detalle = async(e)=>{
   push(`/detalle/${e._id}`)
 }
@@ -58,6 +52,16 @@ const detalle = async(e)=>{
 const editar = async(e)=>{
   push(`/editar/${e._id}`)
 }
+
+useEffect(()=>{
+    const isAuth = localStorage.getItem('isAuth');
+    if(!isAuth){
+      push('/')
+    } 
+},[])
+
+
+
 // CONSOLE
     
     return (

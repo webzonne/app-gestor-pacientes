@@ -8,7 +8,11 @@ module.exports = {
    
     extend: {
       colors: {
-        'botoncolor': '#3eaf7c'
+        'botoncolor': '#3eaf7c',
+        'borderList': '#5BBDF4',
+        'botonEdit':'#29778F',
+        'botonEliminar':'#CF3636',
+        'bgLayout':'#214E77'
       },
     },
   },

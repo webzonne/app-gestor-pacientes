@@ -6,16 +6,26 @@ import Formulario from '../components/Formulario'
 export default function formulario() {
     // VARIABLES
     const {push} = useRouter()
+    const now = new Date()
+    const formato = now.toLocaleString()
+   
     const initialize = {
         nombre:'',
-        patologia:''
+        patologia:'',
+        sexo:'',
+        edad:'',
+        caso:'',
+        fecha:formato
     }
     const [paciente, setpaciente] = useState(initialize)
     // FUNCIONES
     const guardar = (e) => {
         e.preventDefault()
+        setpaciente({...paciente})
+        console.log(paciente)
         postData(paciente)  
     }
+    
     const postData = async (paciente) => {
         try {
             const res = await fetch("/api/server", {
@@ -26,7 +36,7 @@ export default function formulario() {
                 body: JSON.stringify(paciente),
             })
            
-            push("/aplication")
+            push("/Lista")
         } catch (error) {
            console.log(error)
         }

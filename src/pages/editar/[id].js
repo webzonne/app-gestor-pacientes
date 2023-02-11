@@ -30,7 +30,11 @@ export default function editar({respuest}) {
 
   const [pacient,setpacient] = useState({
     nombre:respuest.nombre,
+    edad:respuest.edad,
+    sexo:respuest.sexo,
+    caso:respuest.caso,
     patologia:respuest.patologia
+
   })
   const guardar = (e)=>{
     e.preventDefault()
@@ -46,7 +50,7 @@ export default function editar({respuest}) {
         },
         body: JSON.stringify(pacient),
         })
-        push("/aplication")
+        push("/Lista")
       } catch (error) {
         console.log(error)
       }
