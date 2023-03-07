@@ -26,18 +26,39 @@ export async function getServerSideProps({ params }) {
 export default function editar({respuest}) {
   // VARIABLES
   const {query,push} = useRouter()
+  const [isLoadingTwo, setIsLoadingTwo] = useState(false)
   
 
   const [pacient,setpacient] = useState({
     nombre:respuest.nombre,
-    edad:respuest.edad,
+    cedula:respuest.cedula,
+    ocupacion:respuest.ocupacion,
+    direccion:respuest.direccion,
+    vivienda:respuest.vivienda,
+    nivel:respuest.vivienda,
+    ruta:respuest.ruta,
+    telefono:respuest.telefono,
+    enfermedad:respuest.enfermedad,
+    diagnostico:respuest.diagnostico,
+    plan:respuest.plan,
+    pendiente:respuest.pendiente,
+    abordaje:respuest.abordaje,
+    evaluado:respuest.evaluado,
+    operacion:respuest.operacion,
+    protesis:respuest.protesis,
+    fechaNacimiento:respuest.fechaNacimiento,
+    fechaCirugia:respuest.fechaCirugia,
+    fechaOperacion:respuest.fechaOperacion,
+    diabetes:respuest.antecedentes.diabetes,
+    hipertencion:respuest.antecedentes.hipertencion,
+    artritis:respuest.antecedentes.artritis,
     sexo:respuest.sexo,
-    caso:respuest.caso,
-    patologia:respuest.patologia
-
+    edad:respuest.edad,
   })
+  // console.log(respuest.antecedentes)
   const guardar = (e)=>{
     e.preventDefault()
+    setIsLoadingTwo(true)
     updatePaciente(pacient)
   }
 
@@ -50,7 +71,9 @@ export default function editar({respuest}) {
         },
         body: JSON.stringify(pacient),
         })
-        push("/Lista")
+        setTimeout( async()=>{
+          push("/Lista")
+         },5000)
       } catch (error) {
         console.log(error)
       }
@@ -59,7 +82,7 @@ export default function editar({respuest}) {
   const handlechange = (e)=>{
     const {name,value} = e.target
     setpacient({...pacient, [name]:value})
-    console.log(e.target.value)
+    
   }
   return (
     <>
@@ -71,6 +94,7 @@ export default function editar({respuest}) {
           guardar={guardar}
           handlechange={handlechange}
           pacient={pacient}
+          isLoadingTwo={isLoadingTwo}
           />
       </Layout>
     </>

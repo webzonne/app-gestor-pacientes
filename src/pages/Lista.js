@@ -36,7 +36,7 @@ export default function Lista({ pacientes }) {
   const { push } = useRouter()
   // FUNCIONES
   useEffect(() => {
-    const isAuth = localStorage.getItem('isAuth')
+    const isAuth = sessionStorage.getItem('isAuth')
     if (!isAuth) {
       push('/')
     }

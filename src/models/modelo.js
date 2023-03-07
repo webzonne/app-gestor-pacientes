@@ -5,9 +5,81 @@ const pacienteShema = new mongoose.Schema({
         type:String,
         required:[true, "por favor ingresar nombre"]
     },
-    patologia:{
+    cedula:{
         type:String,
-        required:[true, "por favor ingresar patologia"]
+        required:[true, "por favor ingresar nombre"]
+    },
+    ocupacion:{
+        type:String,
+        required:[true, "por favor ingresar nombre"]
+    },
+    direccion:{
+        type:String,
+        required:[true, "por favor ingresar nombre"]
+    },
+    vivienda:{
+        type:String,
+        required:[true, "por favor ingresar nombre"]
+    },
+    nivel:{
+        type:String,
+        required:[true, "por favor ingresar nombre"]
+    },
+    ruta:{
+        type:String,
+        required:[true, "por favor ingresar nombre"]
+    },
+    telefono:{
+        type:String,
+        required:[true, "por favor ingresar nombre"]
+    },
+    enfermedad:{
+        type:String,
+        required:[true, "por favor ingresar nombre"]
+    },
+    diagnostico:{
+        type:String,
+        required:[true, "por favor ingresar nombre"]
+    },
+    plan:{
+        type:String,
+        required:[true, "por favor ingresar nombre"]
+    },
+    pendiente:{
+        type:String,
+        required:[true, "por favor ingresar nombre"]
+    },
+    abordaje:{
+        type:String,
+        required:[true, "por favor ingresar nombre"]
+    },
+    evaluado:{
+        type:String,
+        required:[true, "por favor ingresar nombre"]
+    },
+    operacion:{
+        type:String,
+        required:[true, "por favor ingresar nombre"]
+    },
+    protesis:{
+        type:String,
+        required:[true, "por favor ingresar nombre"]
+    },
+    fechaNacimiento:{
+        type:String,
+        required:[true, "por favor ingresar sexo"]
+    },
+    fechaCirugia:{
+        type:String,
+        required:[true, "por favor ingresar sexo"]
+    },
+    fechaOperacion:{
+        type:String,
+        required:[true, "por favor ingresar sexo"]
+    },
+    antecedentes:{
+        type:Object,
+        required:[true, "por favor ingresar sexo"]
     },
     sexo:{
         type:String,
@@ -15,10 +87,6 @@ const pacienteShema = new mongoose.Schema({
     },
     edad:{
         type:Number,
-        required:[true, "por favor ingresar edad"]
-    },
-    caso:{
-        type:String,
         required:[true, "por favor ingresar edad"]
     },
     fecha:{

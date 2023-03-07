@@ -4,6 +4,7 @@ import conectarDB from '../lib/dbConnect'
 import modeloUsers from '../models/modeloUsers'
 import homeIcon from '../img/home.png';
 import Image from 'next/image';
+import Loading from '../components/Loading';
 
 export async function getServerSideProps() {
   try {
@@ -33,6 +34,7 @@ export default function Index({ usuarios }) {
   }
   const { push } = useRouter()
   const [user, setuser] = useState(init)
+  const [isLoading, setisLoading] = useState(false)
   // FUNCIONES
   // const entrar = (e)=>{
   //   e.preventDefault()
@@ -47,8 +49,12 @@ export default function Index({ usuarios }) {
     if (user.usuario != usuarios[0].usuario || user.password != usuarios[0].password) {
       alert('usuario o contrasena invalida')
     } else {
-      localStorage.setItem("isAuth", "true");
-      push("/Lista")
+      setisLoading(true)
+      setTimeout(async()=>{
+        sessionStorage.setItem("isAuth", "true");
+        push("/Lista")
+      },5000)
+    
     }
   }
 
@@ -66,8 +72,9 @@ export default function Index({ usuarios }) {
             <input onChange={handlechance} className='border border-slate-400 h-8 mb-5 outline-none' type='text' name='usuario' />
             <p className='mb-3 text-cyan-50 font-semibold'>CONTRASEÑA</p>
             <input onChange={handlechance} className=' border border-slate-400 h-8 mb-5 outline-none' type='password' name='password' />
-            <div>
-              <button className='bg-botoncolor py-2 px-4 rounded-sm hover:opacity-60'>INGRESAR</button>
+            <div className='flex items-center'>
+              <button className='bg-botoncolor py-2 px-4 mr-4 rounded-sm hover:opacity-60'>INGRESAR</button>
+             { isLoading ? <Loading/>:null}
             </div>
           </div>
         </form>
