@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* TABLA */
+.table th,td{
+  @apply text-gray-600  text-left border border-slate-400
+}
+.table td:nth-child(n+2){
+  text-align: center;
+}
+.table th:nth-child(n+2){
+  text-align: center;
+}
+.table tbody tr:nth-child(2n+1){
+  @apply bg-gray-200
+}
+
+/* ANIMACION */
 .rotate {
     animation: rotate 1s linear infinite;
     

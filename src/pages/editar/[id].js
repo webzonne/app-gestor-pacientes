@@ -1,4 +1,4 @@
-import {React, useState} from 'react'
+import {React, useState, useEffect} from 'react'
 import Formulario from '../../components/Formulario'
 import Layout from '../../components/Layout'
 import conectarDB from '../../lib/dbConnect'
@@ -27,6 +27,7 @@ export default function editar({respuest}) {
   // VARIABLES
   const {query,push} = useRouter()
   const [isLoadingTwo, setIsLoadingTwo] = useState(false)
+  const [checked, setChecked] = useState(false);
   
 
   const [pacient,setpacient] = useState({
@@ -40,6 +41,7 @@ export default function editar({respuest}) {
     telefono:respuest.telefono,
     enfermedad:respuest.enfermedad,
     diagnostico:respuest.diagnostico,
+    diagnosticoPost:respuest.diagnosticoPost,
     plan:respuest.plan,
     pendiente:respuest.pendiente,
     abordaje:respuest.abordaje,
@@ -49,11 +51,26 @@ export default function editar({respuest}) {
     fechaNacimiento:respuest.fechaNacimiento,
     fechaCirugia:respuest.fechaCirugia,
     fechaOperacion:respuest.fechaOperacion,
-    diabetes:respuest.antecedentes.diabetes,
-    hipertencion:respuest.antecedentes.hipertencion,
-    artritis:respuest.antecedentes.artritis,
+    antecedentes:{
+      diabetes:respuest.antecedentes.diabetes,
+      hipertencion:respuest.antecedentes.hipertencion,
+      artritis:respuest.antecedentes.artritis,
+      psoriasis:respuest.antecedentes.psoriasis,
+      lupus:respuest.antecedentes.lupus,
+      anemiaDrepanocitica:respuest.antecedentes.anemiaDrepanocitica,
+      perther:respuest.antecedentes.perther,
+      },
     sexo:respuest.sexo,
     edad:respuest.edad,
+    preOperatorioRadio:respuest.preOperatorioRadio,
+    postOperatorioRadio:respuest.postOperatorioRadio,
+    quinceDias:respuest.quinceDias,
+    UnMes:respuest.UnMes,
+    DosMeses:respuest.DosMeses,
+    TresMeses:respuest.TresMeses,
+    CuatroMeses:respuest.CuatroMeses,
+    CincoMeses:respuest.CincoMeses,
+    SeisMeses:respuest.SeisMeses
   })
   // console.log(respuest.antecedentes)
   const guardar = (e)=>{
@@ -79,11 +96,33 @@ export default function editar({respuest}) {
       }
   }
 
-  const handlechange = (e)=>{
-    const {name,value} = e.target
-    setpacient({...pacient, [name]:value})
-    
+  const handleClick = (e)=>{
+ 
   }
+
+
+  const handlechange = (e)=>{
+    // const {name,value} = e.target
+    // setpacient({...pacient, [name]:value})
+    const { name, value, type, checked } = e.target;
+     // Si el campo modificado es un checkbox
+     if (type === "checkbox") {
+      console.log(e.target.checked)
+    // Copiamos el objeto paciente
+    const pacienteCopy = { ...pacient };
+    // Actualizamos el valor del checkbox correspondiente en antecedentes
+    pacienteCopy.antecedentes[name] = checked ? value : "";
+    // Actualizamos el estado del componente
+    setpacient(pacienteCopy);
+  } else {
+    // Si no es un checkbox, actualizamos el valor del campo correspondiente
+    setpacient({ ...pacient, [name]: value });
+  }
+   
+  }
+ 
+// CONSOLE
+
   return (
     <>
       <Layout>
@@ -93,6 +132,8 @@ export default function editar({respuest}) {
           <Formulario
           guardar={guardar}
           handlechange={handlechange}
+          handleClick={handleClick}
+          checked={checked}
           pacient={pacient}
           isLoadingTwo={isLoadingTwo}
           />

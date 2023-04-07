@@ -62,7 +62,7 @@ export default function Lista({ pacientes }) {
 
 
   // CONSOLE
-  console.log(pacientes)
+  // console.log(pacientes)
   return (
     <>
       <Layout>
@@ -70,9 +70,9 @@ export default function Lista({ pacientes }) {
           <div className=' w-10/12 md:w-8/12 mt-[100px] mx-auto'>
             <div className='flex flex-row justify-between items-center py-10'>
               <h2 className='font-semibold text-slate-700 text-xs sm:text-2xl'>LISTA DE PACIENTES</h2>
-              <div className=''>
+              {/* <div className=''>
                 <input className='border w-[150px] sm:w-[260px] border-borderList rounded outline-none' type='text' name='search' />
-              </div>
+              </div> */}
             </div>
 
             {/* MAPEADO */}
@@ -83,7 +83,7 @@ export default function Lista({ pacientes }) {
                     <div className='ml-2 mr-5 lg:ml-10 lg:mr-20 w-8 sm:w-24'>
                       <Image src={userIcon} alt='user-icon' />
                     </div>
-                    <p className='w-auto text-sm sm:text-xl md:text-2xl xl:text-3xl text-slate-700'>{e.nombre.toUpperCase()}</p>
+                    <p className='w-auto text-sm sm:text-xl md:text-2xl xl:text-3xl text-slate-700'>{e.nombre?.toUpperCase()}</p>
                   </div>
                   <div className='flex flex-row items-center'>
                     <button onClick={() => editar(e)} className='bg-botonEdit w-auto sm:w-32 p-2 sm:p-5 h-10 sm:h-[142px] text-sm sm:text-xl text-cyan-50 font-semibold hover:opacity-80'>Editar</button>

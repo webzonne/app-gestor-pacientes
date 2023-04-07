@@ -19,13 +19,6 @@ export default async function server(req,res){
             } catch (error) {
                 return res.status(400).json({error})
             }
-        case 'DELETE':
-            try {
-                await modelo.findByIdAndDelete(id)
-                return res.status(200).json({mensaje:'borrado con exito'})
-            } catch (error) {
-                return res.status(404).json({mensaje:'id no encontrada'})
-            }
             default:
             return res.status(500).json({mensaje:'falla en el servidor'})
     }

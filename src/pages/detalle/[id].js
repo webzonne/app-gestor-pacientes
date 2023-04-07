@@ -15,11 +15,8 @@ export async function getServerSideProps({ params }) {
 }
 // CLOSE SERVER
 export default function Index({ respuest }) {
-  let fecha = new Date(respuest.fecha)
-  let options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
-  let fechaNew = fecha.toLocaleString('es-ES', options);
   const antecedentesArray = Object.entries(respuest.antecedentes)
-  console.log(antecedentesArray)
+  //console.log(antecedentesArray)
   return (
     <>
       <Layout>
@@ -34,7 +31,7 @@ export default function Index({ respuest }) {
               {/* NOMBRE */}
               <h3 className='font-semibold sm:font-normal text-base sm:text-4xl'>{respuest.nombre.toUpperCase()}</h3>
               {/* FECHA */}
-              <p className='text-base'>fecha de ingreso: {fechaNew.toUpperCase()}</p>
+              <p className='text-base'>fecha de ingreso: {respuest.fecha.toUpperCase()}</p>
             </div>
 
             {/* SEXO */}
@@ -90,14 +87,15 @@ export default function Index({ respuest }) {
               <p className='text-xl font-semibold mb-4'>RUTA DE ACCESO</p>
               <p className=''>{respuest.ruta}</p>
             </div>
-             {/*ANTECEDENTES*/}
-             <div className='p-5 border-b border-slate-400'>
+            {/*ANTECEDENTES*/}
+            <div className='p-5 border-b border-slate-400'>
               <p className='text-xl font-semibold mb-4'>ANTECEDENTES</p>
-              {antecedentesArray && antecedentesArray.map((e)=>{return(
-                <div key={e}><p>{e[1]}</p></div>)
-                  })}
-             
-             </div>
+              {antecedentesArray && antecedentesArray.map((e) => {
+                return (
+                  <div key={e}><p>{e[1]}</p></div>)
+              })}
+
+            </div>
 
             {/* ENFERMEDAD ACTUAL */}
             <div className='p-5 border-b border-slate-400'>
@@ -111,6 +109,61 @@ export default function Index({ respuest }) {
               <p className=''>{respuest.diagnostico}</p>
             </div>
 
+            {/* DIAGNOSTICO POST-OPERATORIO */}
+            <div className='p-5 border-b border-slate-400'>
+              <p className='text-xl font-semibold mb-4'>DIAGNOSTICO POST-OPERATORIO</p>
+              <p className=''>{respuest.diagnosticoPost}</p>
+            </div>
+            {/* FUERZA MUSCULAR */}
+            <div className='p-5 border-b border-slate-400'>
+            <p className='text-xl font-semibold mb-4'>FUERZA MUSCULAR</p>
+              <table className='w-full table'>
+                <thead>
+                  <tr>
+                    <th>CASO</th>
+                    <th>Fuerza</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>PRE-OPERATORIO</td>
+                    <td>{respuest.preOperatorioRadio}</td>
+                  </tr>
+                  <tr>
+                    <td>POST-OPERATORIO</td>
+                    <td>{respuest.postOperatorioRadio}</td>
+                  </tr>
+                  <tr>
+                    <td>15 DIAS POST-OPERATORIO</td>
+                    <td>{respuest.quinceDias}</td>
+                  </tr>
+                  <tr>
+                    <td>1 MES POST-OPERATORIO</td>
+                    <td>{respuest.UnMes}</td>
+                  </tr>
+                  <tr>
+                    <td>2 MESES POST-OPERATORIO</td>
+                    <td>{respuest.DosMeses}</td>
+                  </tr>
+                  <tr>
+                    <td>3 MESES POST-OPERATORIO</td>
+                    <td>{respuest.TresMeses}</td>
+                  </tr>
+                  <tr>
+                    <td>4 MESES POST-OPERATORIO</td>
+                    <td>{respuest.CuatroMeses}</td>
+                  </tr>
+                  <tr>
+                    <td>5 MESES POST-OPERATORIO</td>
+                    <td>{respuest.CincoMeses}</td>
+                  </tr>
+                  <tr>
+                    <td>6 MESES POST-OPERATORIO</td>
+                    <td>{respuest.SeisMeses}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             {/* PLAN */}
             <div className='p-5 border-b border-slate-400'>
               <p className='text-xl font-semibold mb-4'>PLAN</p>

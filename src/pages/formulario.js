@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useEffect, useState} from 'react';
 import Layout from '../components/Layout';
 import { useRouter } from 'next/router';
 import Formulario from '../components/Formulario';
@@ -7,10 +7,12 @@ import Formulario from '../components/Formulario';
 export default function formulario() {
     // VARIABLES
     const [isLoadingTwo, setIsLoadingTwo] = useState(false)
+    const [checked, setChecked] = useState(false);
     const {push} = useRouter()
     const now = new Date()
-    const formato = now.toLocaleString()
-   
+    let fecha = now.toLocaleDateString('es-ES');
+    let hora  = now.toLocaleTimeString('es-ES', { hour: 'numeric', minute: 'numeric', hour12: true });
+    const formato = fecha+' , '+hora
     const initialize = {
         nombre:'',
         cedula:'',
@@ -24,6 +26,16 @@ export default function formulario() {
         telefono:'',
         enfermedad:'',
         diagnostico:'',
+        diagnosticoPost:'',
+        preOperatorioRadio:'',
+        postOperatorioRadio:'',
+        quinceDias:'',
+        UnMes:'',
+        DosMeses:'',
+        TresMeses:'',
+        CuatroMeses:'',
+        CincoMeses:'',
+        SeisMeses:'',
         plan:'',
         pendiente:'',
         abordaje:'',
@@ -37,11 +49,15 @@ export default function formulario() {
             diabetes:'',
             hipertencion:'',
             artritis:'',
+            psoriasis:'',
+            lupus:'',
+            anemiaDrepanocitica:'',
+            perther:''
             },
         fecha:formato
     }
     const [paciente, setpaciente] = useState(initialize)
-    console.log(paciente.antecedentes.diabetes)
+    
     // FUNCIONES
     const guardar = (e) => {
         e.preventDefault()
@@ -69,12 +85,15 @@ export default function formulario() {
            console.log(error)
         }
     }
+
+    
     // captando lo que colocamos en el formulario
     const handlechange = (e)=>{
         const { name, value, type, checked } = e.target;
-
+        
         // Si el campo modificado es un checkbox
         if (type === "checkbox") {
+            // console.log(e.target.checked)
           // Copiamos el objeto paciente
           const pacienteCopy = { ...paciente };
           // Actualizamos el valor del checkbox correspondiente en antecedentes
@@ -87,7 +106,12 @@ export default function formulario() {
         }
         
     }
+    const handleClick = (e)=>{
+        setChecked(!checked)
+    }
+   
     // CONSOLE
+
     return (
         <div>
             <Layout>
@@ -97,6 +121,8 @@ export default function formulario() {
                 <Formulario
                 guardar={guardar}
                 handlechange={handlechange}
+                handleClick={handleClick}
+                checked={checked}
                 pacient={paciente}
                 isLoadingTwo={isLoadingTwo}
                 />
