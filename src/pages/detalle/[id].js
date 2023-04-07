@@ -2,6 +2,7 @@ import conectarDB from '../../lib/dbConnect'
 import modelo from '../../models/modelo'
 import React from 'react'
 import Layout from '../../components/Layout'
+import Image from 'next/image';
 // SERVER
 export async function getServerSideProps({ params }) {
   try {
@@ -211,6 +212,17 @@ export default function Index({ respuest }) {
               <p className='text-xl font-semibold mb-4'>PROCEDENCIA DE PROTESIS</p>
               <p className=''>{respuest.protesis}</p>
             </div>
+            {/* RAYOS X */}
+            <div className='p-5 border-b border-slate-400'>
+              <p className='text-xl font-semibold mb-4'>RAYOS X</p>
+              {respuest.rayosx ?<a href={respuest.rayosx} download='rayox.jpg'><Image src={respuest.rayosx} width={120} height={120} alt='rayosX' /></a>:null}
+            </div>
+             {/* EXAMEN */}
+             <div className='p-5 border-b border-slate-400'>
+              <p className='text-xl font-semibold mb-4'>EXAMEN</p>
+              {respuest.examen ?<a href={respuest.examen} download='examen.jpg'><Image src={respuest.examen} width={120} height={120} alt='examen' /></a>:null}
+            </div>
+            
           </div>
         </div>
       </Layout>

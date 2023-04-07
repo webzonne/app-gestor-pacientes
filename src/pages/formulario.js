@@ -45,6 +45,8 @@ export default function formulario() {
         fechaCirugia:'',
         fechaOperacion:'',
         protesis:'',
+        rayosx:'',
+        examen:'',
         antecedentes:{
             diabetes:'',
             hipertencion:'',
@@ -85,7 +87,12 @@ export default function formulario() {
            console.log(error)
         }
     }
-
+    const handleFileChangeRayosX = (file)=>{
+        setpaciente({...paciente, rayosx:file.base64 })
+    }
+    const handleFileChangeExamen = (file)=>{
+        setpaciente({...paciente, examen:file.base64 })
+    }
     
     // captando lo que colocamos en el formulario
     const handlechange = (e)=>{
@@ -121,6 +128,8 @@ export default function formulario() {
                 <Formulario
                 guardar={guardar}
                 handlechange={handlechange}
+                handleFileChangeRayosX={handleFileChangeRayosX}
+                handleFileChangeExamen={handleFileChangeExamen}
                 handleClick={handleClick}
                 checked={checked}
                 pacient={paciente}

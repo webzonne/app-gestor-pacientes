@@ -1,7 +1,8 @@
 import React from 'react'
 import LoadingTwo from '../components/LoadingTwo'
+import FileBase from 'react-file-base64';
 
-export default function Formulario({ isLoadingTwo, guardar, handlechange, handleClick, checked, pacient }) {
+export default function Formulario({ isLoadingTwo, guardar, handlechange, handleFileChangeRayosX, handleFileChangeExamen, handleClick, checked, pacient }) {
 
     return (
         <>
@@ -221,7 +222,14 @@ export default function Formulario({ isLoadingTwo, guardar, handlechange, handle
                     </select>
                     {/* RAYOS X */}
                     <p>SUBIR IMAGEN RAYOS X</p>
-                    <input onChange={handlechange} className='my-7' type='file' name='rayosX' />
+                    <div className='my-7'>
+                        <FileBase type='file' multiple={false} onDone={handleFileChangeRayosX} />
+                    </div>
+                     {/* EXAMEN */}
+                     <p>SUBIT EXAMEN</p>
+                    <div className='my-7'>
+                        <FileBase type='file' multiple={false} onDone={handleFileChangeExamen} />
+                    </div>
                     <div className='flex items-center'>
                         <button className='bg-green-700 py-3 px-5 mr-5 rounded-lg text-slate-50'>Guardar</button>
                         {isLoadingTwo ? <LoadingTwo /> : null}

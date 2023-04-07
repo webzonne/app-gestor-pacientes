@@ -121,6 +121,12 @@ const pacienteShema = new mongoose.Schema({
     SeisMeses:{
         type:String,
     },
+    rayosx:{
+        type:String,
+    },
+    examen:{
+        type:String,
+    },
     fecha:{
         type:String  
     }
