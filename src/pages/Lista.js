@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../components/Layout'
 import Image from 'next/image';
 import userIcon from '../img/user.png'
 import { useRouter } from 'next/router';
 import conectarDB from '../lib/dbConnect';
 import modelPaciente from '../models/modelo';
+import Cargando from '../components/Cargando';
 
 
 // SERVER
@@ -34,6 +35,7 @@ export async function getServerSideProps() {
 export default function Lista({ pacientes }) {
   // VARIABLES
   const { push } = useRouter()
+  const [cargando, setCargando] = useState(false)
   // FUNCIONES
   useEffect(() => {
     const isAuth = sessionStorage.getItem('isAuth')
@@ -44,7 +46,9 @@ export default function Lista({ pacientes }) {
 
   //DETALLE
   const detalle = async (e) => {
+    setCargando(true)
     push(`/detalle/${e._id}`)
+    setCargando(false)
   }
   // EDITAR
   const editar = async (e) => {
@@ -65,6 +69,7 @@ export default function Lista({ pacientes }) {
   // console.log(pacientes)
   return (
     <>
+      {cargando ? <Cargando/> :null}
       <Layout>
         {pacientes.length !== 0 ?
           <div className=' w-10/12 md:w-8/12 mt-[100px] mx-auto'>

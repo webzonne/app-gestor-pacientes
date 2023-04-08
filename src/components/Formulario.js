@@ -226,7 +226,7 @@ export default function Formulario({ isLoadingTwo, guardar, handlechange, handle
                         <FileBase type='file' multiple={false} onDone={handleFileChangeRayosX} />
                     </div>
                      {/* EXAMEN */}
-                     <p>SUBIT EXAMEN</p>
+                     <p>SUBIR EXAMEN</p>
                     <div className='my-7'>
                         <FileBase type='file' multiple={false} onDone={handleFileChangeExamen} />
                     </div>

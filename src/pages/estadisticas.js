@@ -38,39 +38,35 @@ export async function getServerSideProps() {
 // CLOSE SERVER
 
 export default function estadisticas({ pacientes }) {
-    // DESGASTE ARTICULAR
-    const caso1 = pacientes.filter((e) => e.caso === 'Desgaste Articular')
+    console.log(pacientes)
+    // Anterior
+    const caso1 = pacientes.filter((e) => e.abordaje === 'Anterior')
     const contadorCaso1 = caso1.length
-    console.log('Desgaste Articular ' + contadorCaso1)
+    console.log('Anterior ' + contadorCaso1)
 
-    // ABORDAJE ANTERIOR DE CADERA
-    const caso2 = pacientes.filter((e) => e.caso === 'Abordaje anterior de cadera')
+    // Lateral
+    const caso2 = pacientes.filter((e) => e.abordaje === 'Lateral')
     const contadorCaso2 = caso2.length
-    console.log('Abordaje anterior de cadera ' + contadorCaso2)
+    console.log('Lateral ' + contadorCaso2)
 
-    // GONARTROSIS
-    const caso3 = pacientes.filter((e) => e.caso === 'Gonartrosis')
+    // Posterior
+    const caso3 = pacientes.filter((e) => e.abordaje === 'Posterior')
     const contadorCaso3 = caso3.length
-    console.log('Gonartrosis ' + contadorCaso3)
+    console.log('Posterior ' + contadorCaso3)
 
-    // ARTROPLASTIA TOTAL DE CADERA
-    const caso4 = pacientes.filter((e) => e.caso === 'Artroplastia total de cadera')
+    // otras
+    const caso4 = pacientes.filter((e) => e.abordaje === 'otras')
     const contadorCaso4 = caso4.length
-    console.log('Artroplastia total de cadera ' + contadorCaso4)
-
-    // NECROSIS AVASCULAR
-    const caso5 = pacientes.filter((e) => e.caso === 'Necrosis Avascular')
-    const contadorCaso5 = caso5.length
-    console.log('Necrosis Avascular ' + contadorCaso5)
+    console.log('otras ' + contadorCaso4)
 
     // CHART JS
     // DATA
     const data = {
-      labels: ['Desgaste Articular', 'Abordaje anterior de cadera', 'Gonartrosis', 'Artroplastia total de cadera', 'Necrosis Avascular'],
+      labels: ['ANTERIOR', 'LATERAL', 'POSTERIOR', 'OTRAS'],
       datasets: [
           {
-              label: 'Casos',
-              data: [contadorCaso1, contadorCaso2, contadorCaso3, contadorCaso4, contadorCaso5],
+              label: 'ABORDAJE',
+              data: [contadorCaso1, contadorCaso2, contadorCaso3, contadorCaso4],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
@@ -106,29 +102,7 @@ export default function estadisticas({ pacientes }) {
             <Layout>
                 <h1 className='text-sm md:text-4xl  text-center py-2 mt-20 mb-10 m-auto w-12/12 md:w-2/12 border border-slate-100 rounded'>ESTADISTICAS</h1>
                 <div className='py-12 w-10/12 mx-auto'>
-                    {/* DESGASTE ARTICULAR */}
-                    {/* <h3>Casos de Desgaste Articular:</h3>
-                    <p>{contadorCaso1} pacientes de {pacientes.length}</p> */}
-
-                    {/* ABORDAJE ANTERIOR DE CADERA  */}
-                    {/* <h3>Casos de Abordaje anterior de cadera:</h3>
-                    <p>{contadorCaso2} pacientes de {pacientes.length}</p> */}
-
-                    {/* GONARTROSIS  */}
-                    {/* <h3>Casos de Gonartrosis:</h3>
-                    <p>{contadorCaso3} pacientes de {pacientes.length}</p> */}
-
-                    {/* ARTROPLASTIA TOTAL DE CADERA  */}
-                    {/* <h3>Casos de Artroplastia total de cadera:</h3>
-                    <p>{contadorCaso4} pacientes de {pacientes.length}</p> */}
-
-                    {/* NECROSIS AVASCULAR  */}
-                    {/* <h3>Casos de Necrosis Avascular:</h3>
-                    <p>{contadorCaso5} pacientes de {pacientes.length}</p> */}
-
-
                     {/* CHART JS  */}
-
                     <Bar options={options} data={data} />;
                 </div>
             </Layout>
