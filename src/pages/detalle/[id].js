@@ -18,6 +18,7 @@ export async function getServerSideProps({ params }) {
 export default function Index({ respuest }) {
   const antecedentesArray = Object.entries(respuest.antecedentes)
   //console.log(antecedentesArray)
+  //console.log(respuest)
   return (
     <>
       <Layout>

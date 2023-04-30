@@ -38,26 +38,26 @@ export async function getServerSideProps() {
 // CLOSE SERVER
 
 export default function estadisticas({ pacientes }) {
-    console.log(pacientes)
+    //console.log(pacientes)
     // Anterior
     const caso1 = pacientes.filter((e) => e.abordaje === 'Anterior')
     const contadorCaso1 = caso1.length
-    console.log('Anterior ' + contadorCaso1)
+    //console.log('Anterior ' + contadorCaso1)
 
     // Lateral
     const caso2 = pacientes.filter((e) => e.abordaje === 'Lateral')
     const contadorCaso2 = caso2.length
-    console.log('Lateral ' + contadorCaso2)
+    //console.log('Lateral ' + contadorCaso2)
 
     // Posterior
     const caso3 = pacientes.filter((e) => e.abordaje === 'Posterior')
     const contadorCaso3 = caso3.length
-    console.log('Posterior ' + contadorCaso3)
+    //console.log('Posterior ' + contadorCaso3)
 
     // otras
     const caso4 = pacientes.filter((e) => e.abordaje === 'otras')
     const contadorCaso4 = caso4.length
-    console.log('otras ' + contadorCaso4)
+    //console.log('otras ' + contadorCaso4)
 
     // CHART JS
     // DATA

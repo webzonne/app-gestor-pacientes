@@ -2,7 +2,7 @@ import React from 'react'
 import LoadingTwo from '../components/LoadingTwo'
 import FileBase from 'react-file-base64';
 
-export default function Formulario({ isLoadingTwo, guardar, handlechange, handleFileChangeRayosX, handleFileChangeExamen, handleClick, checked, pacient }) {
+export default function Formulario({ isLoadingTwo, previewX, previewE, imagenExamen, guardarDisabledE, guardarDisabledX, imagenX, guardar, handlechange, handleFileChangeRayosX, handleFileChangeExamen, handleClick, checked, pacient }) {
 
     return (
         <>
@@ -223,15 +223,19 @@ export default function Formulario({ isLoadingTwo, guardar, handlechange, handle
                     {/* RAYOS X */}
                     <p>SUBIR IMAGEN RAYOS X</p>
                     <div className='my-7'>
-                        <FileBase type='file' multiple={false} onDone={handleFileChangeRayosX} />
+                        {/* <FileBase type='file' multiple={false} onDone={handleFileChangeRayosX} /> */}
+                        <input type='file' name='rayosx' onChange={handleFileChangeRayosX}/><br/><br/>
+                        {previewX ? <img src={previewX} width={150} height={150} alt='Preview' />:imagenX ? <p>Cargando...</p>:null}
                     </div>
                      {/* EXAMEN */}
                      <p>SUBIR EXAMEN</p>
                     <div className='my-7'>
-                        <FileBase type='file' multiple={false} onDone={handleFileChangeExamen} />
+                        {/* <FileBase type='file' multiple={false} onDone={handleFileChangeExamen} /> */}
+                        <input type='file' name='examen' onChange={handleFileChangeExamen}/><br/><br/>
+                        {previewE ? <img src={previewE} width={150} height={150} alt='Preview' />:imagenExamen ? <p>Cargando...</p>:null}
                     </div>
                     <div className='flex items-center'>
-                        <button className='bg-green-700 py-3 px-5 mr-5 rounded-lg text-slate-50'>Guardar</button>
+                        <button className={`bg-green-700 py-3 px-5 mr-5 rounded-lg text-slate-50 ${guardarDisabledX || guardarDisabledE ? 'disabled':''} `}  disabled={guardarDisabledX || guardarDisabledE}>Guardar</button>
                         {isLoadingTwo ? <LoadingTwo /> : null}
                     </div>
                 </div>
