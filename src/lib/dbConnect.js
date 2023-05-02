@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 mongoose.set('strictQuery', false);
-// const MONGODB_URL= process.env.MONGODB_URL
-const MONGODB_URL= 'mongodb+srv://test:test@cluster0.eymeqjp.mongodb.net/?retryWrites=true&w=majority'
+const MONGODB_URL= process.env.MONGODB_URL
+// const MONGODB_URL= 'mongodb+srv://test:test@cluster0.eymeqjp.mongodb.net/?retryWrites=true&w=majority'
 
 const conectarDB = async() =>{
     try{
