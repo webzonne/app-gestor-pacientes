@@ -37,12 +37,14 @@ export default function Lista({ pacientes }) {
   const { push } = useRouter()
   const [cargando, setCargando] = useState(false)
   // FUNCIONES
-  useEffect(() => {
-    const isAuth = sessionStorage.getItem('isAuth')
-    if (!isAuth) {
-      push('/')
-    }
-  }, [])
+  
+  // VERSION PREMIUM
+  // useEffect(() => {
+  //   const isAuth = sessionStorage.getItem('isAuth')
+  //   if (!isAuth) {
+  //     push('/')
+  //   }
+  // }, [])
 
   //DETALLE
   const detalle = async (e) => {

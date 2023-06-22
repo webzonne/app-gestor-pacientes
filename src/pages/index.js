@@ -45,17 +45,20 @@ export default function Index({ usuarios }) {
     setuser({ ...user, [name]: value })
   }
   const handleSubmit = (e) => {
+    // VERSION DE PRUEBA
     e.preventDefault()
-    if (user.usuario != usuarios[0].usuario || user.password != usuarios[0].password) {
-      alert('usuario o contrasena invalida')
-    } else {
-      setisLoading(true)
-      setTimeout(async()=>{
-        sessionStorage.setItem("isAuth", "true");
-        push("/Lista")
-      },5000)
+    push('/Lista')
+    // USUARIOS REGISTRADO VERSION PREMIUN
+    // if (user.usuario != usuarios[0].usuario || user.password != usuarios[0].password) {
+    //   alert('usuario o contrasena invalida')
+    // } else {
+    //   setisLoading(true)
+    //   setTimeout(async()=>{
+    //     sessionStorage.setItem("isAuth", "true");
+    //     push("/Lista")
+    //   },5000)
     
-    }
+    // }
   }
 
   // CONSOLE
@@ -76,6 +79,7 @@ export default function Index({ usuarios }) {
               <button className='bg-botoncolor py-2 px-4 mr-4 rounded-sm hover:opacity-60'>INGRESAR</button>
              { isLoading ? <Loading/>:null}
             </div>
+            <p className='text-white mt-3'>Version demo: ingrese cualquier usuario y contraseña</p>
           </div>
         </form>
 
